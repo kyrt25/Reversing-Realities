@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reversing Realities</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #181818;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    a {
+      color: #8ab4f8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #000000cc;
+      background: #000;
+      margin-bottom: 1rem;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 12px;
+    }
+    p.caption {
+      font-size: 1rem;
+      color: #cccccc;
+      text-align: center;
+      max-width: 90%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">Loading content...</h1>
+  <div id="content"></div>
+
+  <script>
+    // Contents mapped by "content" param
+    const contents = {
+      "video-burnham": {
+        title: "Bo Burnham - Welcome to the Internet",
+        html: `
+          <div class="container">
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/k1BneeJTDcU" 
+                title="Bo Burnham - Welcome to the Internet"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="caption">
+              Video of <a href="https://www.youtube.com/watch?v=k1BneeJTDcU" target="_blank" rel="noopener">Bo Burnham - Welcome to the Internet</a>.
+            </p>
+          </div>
+        `
+      },
+
+            "video-Cage": {
+        title: "John Cage 4'33",
+        html: `
+          <div class="container">
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/watch?v=JTEFKFiXSx4" 
+                title="John Cage's 4'33"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="caption">
+              Video of <a href="https://www.youtube.com/watch?v=JTEFKFiXSx4" target="_blank" rel="noopener">John Cage's 4'33</a>.
+            </p>
+          </div>
+        `
+      },
+      
+    };
+
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    function loadContent() {
+      const contentKey = getQueryParam('content');
+      const container = document.getElementById('content');
+      const titleElem = document.getElementById('title');
+
+      if(contentKey && contents[contentKey]) {
+        titleElem.textContent = contents[contentKey].title;
+        container.innerHTML = contents[contentKey].html;
+      } else {
+        titleElem.textContent = "Welcome to Reversing Realities";
+        container.innerHTML = `
+
+        `;
+      }
+    }
+
+    window.onload = loadContent;
+  </script>
+
+</body>
+</html>
