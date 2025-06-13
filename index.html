@@ -76,31 +76,33 @@
               </iframe>
             </div>
             <p class="caption">
-              Video of <a href="https://www.youtube.com/watch?v=k1BneeJTDcU" target="_blank" rel="noopener"></a>.
+              Video from <a href="https://www.youtube.com/watch?v=k1BneeJTDcU" target="_blank" rel="noopener">Bo Burnham - Welcome to the Internet</a>.
             </p>
           </div>
         `
       },
-
-            "video-kissinger ": {
-        html: `
-          <div class="container">
-            <div class="video-wrapper">
-              <iframe 
-                src="https://www.youtube.com/watch?v=AYbKxTyNFqc" 
-                title="Information Overload. Kissinger Predicted It Would Become Worse"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-            <p class="caption">
-              Video of <a href="https://www.youtube.com/watch?v=AYbKxTyNFqc" target="_blank" rel="noopener"></a>.
-            </p>
-          </div>
-        `
-      },
+     "video-kissinger": {
+  html: `
+    <div class="container">
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/AYbKxTyNFqc" 
+          title="Information Overload. Kissinger Predicted It Would Become Worse"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="caption">
+        Video from <a href="https://www.youtube.com/watch?v=AYbKxTyNFqc" target="_blank" rel="noopener">
+          Information Overload. Kissinger Predicted It Would Become Worse
+        </a>.
+      </p>
+    </div>
+  `
+}
       
     };
+    
 
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
@@ -118,7 +120,11 @@
       } else {
         titleElem.textContent = "Welcome to Reversing Realities";
         container.innerHTML = `
-
+          <p>Select a content:</p>
+          <ul>
+            <li><a href="?content=video-burnham">Bo Burnham - Welcome to the Internet (video)</a></li>
+          <li><a href="?content=video-kissinger">Kissinger - Information Overload</a></li>
+          </ul>
         `;
       }
     }
