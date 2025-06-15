@@ -31,7 +31,7 @@
     .video-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 12px;
@@ -62,47 +62,88 @@
   <div id="content"></div>
 
   <script>
-    // Contents mapped by "content" param
     const contents = {
+      "video-Gidam": {
+        html: `
+          <div class="container">
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/4uMWlsvwsQo" 
+                title="Gidam: Drums of protest in Khartoum"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p class="caption">
+              Video from <a href="https://www.youtube.com/watch?v=4uMWlsvwsQo" target="_blank" rel="noopener">Gidam: Drums of protest in Khartoum</a>.
+            </p>
+          </div>
+        `
+      },
+      "video-sudan": {
+        html: `
+          <div class="container">
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/R9BS7RkkuyE" 
+                title="SUDAN, REMEMBER US"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p class="caption">
+              Video from <a href="https://www.youtube.com/watch?v=R9BS7RkkuyE" target="_blank" rel="noopener">SUDAN, REMEMBER US</a>.
+            </p>
+          </div>
+        `
+      },
+      "video-attenborough": {
+        html: `
+          <div class="container">
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/fyYpExl8AJU" 
+                title="A message to world leaders"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p class="caption">
+              Video from <a href="https://www.youtube.com/watch?v=fyYpExl8AJU" target="_blank" rel="noopener">Sir David Attenborough</a>.
+            </p>
+          </div>
+        `
+      },
       "video-burnham": {
         html: `
           <div class="container">
             <div class="video-wrapper">
               <iframe 
                 src="https://www.youtube.com/embed/k1BneeJTDcU" 
-                title="Bo Burnham - Welcome to the Internet"
+                title="Welcome to the Internet - Bo Burnham"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
+                allowfullscreen></iframe>
             </div>
             <p class="caption">
-              Video from <a href="https://www.youtube.com/watch?v=k1BneeJTDcU" target="_blank" rel="noopener">Bo Burnham - Welcome to the Internet</a>.
+              Video from <a href="https://www.youtube.com/watch?v=k1BneeJTDcU" target="_blank" rel="noopener">Welcome to the Internet - Bo Burnham</a>.
             </p>
           </div>
         `
       },
-     "video-kissinger": {
-  html: `
-    <div class="container">
-      <div class="video-wrapper">
-        <iframe 
-          src="https://www.youtube.com/embed/AYbKxTyNFqc" 
-          title="Information Overload. Kissinger Predicted It Would Become Worse"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <p class="caption">
-        Video from <a href="https://www.youtube.com/watch?v=AYbKxTyNFqc" target="_blank" rel="noopener">
-          Information Overload. Kissinger Predicted It Would Become Worse
-        </a>.
-      </p>
-    </div>
-  `
-}
-      
+      "video-mahmoud": {
+        html: `
+          <div class="container">
+            <div class="video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/VoJRW0nOvSk" 
+                title="Those Who Pass Between Fleeting Words by Mahmoud Darwish"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p class="caption">
+              Video from <a href="https://www.youtube.com/watch?v=VoJRW0nOvSk" target="_blank" rel="noopener">Those Who Pass Between Fleeting Words by Mahmoud Darwish</a>.
+            </p>
+          </div>
+        `
+      }
     };
-    
 
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
@@ -114,7 +155,7 @@
       const container = document.getElementById('content');
       const titleElem = document.getElementById('title');
 
-      if(contentKey && contents[contentKey]) {
+      if (contentKey && contents[contentKey]) {
         titleElem.textContent = contents[contentKey].title;
         container.innerHTML = contents[contentKey].html;
       } else {
@@ -122,8 +163,11 @@
         container.innerHTML = `
           <p>Select a content:</p>
           <ul>
-            <li><a href="?content=video-burnham">Bo Burnham - Welcome to the Internet (video)</a></li>
-          <li><a href="?content=video-kissinger">Kissinger - Information Overload</a></li>
+            <li><a href="?content=video-burnham">Bo Burnham - Welcome to the Internet</a></li>
+            <li><a href="?content=video-Gidam">Gidam - Drums of protest in Khartoum</a></li>
+            <li><a href="?content=video-sudan">Sudan - Remember Us</a></li>
+            <li><a href="?content=video-attenborough">David Attenborough - A Message to World Leaders</a></li>
+            <li><a href="?content=video-mahmoud">Mahmoud Darwish - Those Who Pass Between Fleeting Words</a></li>
           </ul>
         `;
       }
