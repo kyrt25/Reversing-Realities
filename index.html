@@ -64,11 +64,12 @@
   <script>
     const contents = {
       "video-Commanders": {
+        title: "How Trophy Videos Link Commanders to War Crimes in Sudan",
         html: `
           <div class="container">
             <div class="video-wrapper">
               <iframe 
-                src="https://www.youtube.com/watch?v=H231YlstDKk" 
+                src="https://www.youtube.com/embed/H231YlstDKk" 
                 title="How Trophy Videos Link Commanders to War Crimes in Sudan | Visual Investigations"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
@@ -156,15 +157,15 @@
       const titleElem = document.getElementById('title');
 
       if (contentKey && contents[contentKey]) {
-        titleElem.textContent = contents[contentKey].title;
+        titleElem.textContent = contents[contentKey].title || "Reversing Realities";
         container.innerHTML = contents[contentKey].html;
       } else {
         titleElem.textContent = "Welcome to Reversing Realities";
         container.innerHTML = `
           <p>Select a content:</p>
           <ul>
+            <li><a href="?content=video-Commanders">Commanders – War Crimes in Sudan</a></li>
             <li><a href="?content=video-burnham">Bo Burnham - Welcome to the Internet</a></li>
-            <li><a href="?content=video-Gidam">Gidam - Drums of protest in Khartoum</a></li>
             <li><a href="?content=video-sudan">Sudan - Remember Us</a></li>
             <li><a href="?content=video-attenborough">David Attenborough - A Message to World Leaders</a></li>
             <li><a href="?content=video-mahmoud">Mahmoud Darwish - Those Who Pass Between Fleeting Words</a></li>
